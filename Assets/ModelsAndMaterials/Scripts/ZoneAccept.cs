@@ -6,7 +6,8 @@ public class ZoneAccept : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private int _salary = 5;
-    [SerializeField] private int _respect = 5;
+    [SerializeField] private int _respect = 10;
+    [SerializeField] private BoxType _boxType;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,16 @@ public class ZoneAccept : MonoBehaviour
     }
     private void CheckCorrectDistract(BoxType Type)
     {
+        if(Type == _boxType)
         _player.SendAward(_salary, _respect);
+        else
+        {
+            _player.SendAward(_salary*-3, 0);
+        }
+    }
+    public BoxType CheckType(BoxType Type)
+    {
+        return _boxType = Type;
     }
     
 }

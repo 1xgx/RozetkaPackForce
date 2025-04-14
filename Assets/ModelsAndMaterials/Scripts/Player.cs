@@ -21,10 +21,8 @@ public class Player : MonoBehaviour
     {
         _money += Money;
         _rescpect += Respect;
-        Debug.Log($"{_money} : Money" +
-            $"{_rescpect} : RZTKRespect");
 
         _moneyText.text = $"Money: {_money}";
-        _RZTKScoreText.text = $"Money: {_rescpect}";
+        _RZTKScoreText.text = $"RZTKScore: {_rescpect}";
     }
 }

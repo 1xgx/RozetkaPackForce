@@ -10,24 +10,29 @@ public class SwipeControl : MonoBehaviour
     [Header("How much I have to swipe to swipecontrol is work")]
     [SerializeField] private float swipeThreshold = 50f;
     [SerializeField] private float movementSpeed = 5f;
-
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
-    private bool isSwiping = false;
+    [SerializeField]private bool isSwiping = false;
 
     public Transform FocusedObject;
 
+    private void Update()
+    {
+        
+    }
     private void OnEnable()
     {
+        Debug.Log("Свайп активирован");
         _swipeControler.Enable();
         _swipeControler.performed += OnSwipePerformed;
         _swipeControler.canceled += OnSwipeCanceled;
     }
     private void OnDisable()
     {
+        Debug.Log("Свайп неактивирован");
         _swipeControler.Disable();
-        _swipeControler.performed += OnSwipePerformed;
-        _swipeControler.canceled += OnSwipeCanceled;
+        _swipeControler.performed -= OnSwipePerformed;
+        _swipeControler.canceled -= OnSwipeCanceled;
     }
     private void OnSwipePerformed(InputAction.CallbackContext context)
     {
@@ -52,14 +57,14 @@ public class SwipeControl : MonoBehaviour
 
         if (Mathf.Abs(swipeDistance) >= swipeThreshold)
         {
-            if (swipeDistance > 0)
+            if (swipeDistance < 0)
             {
-                Debug.Log("Свайп вперед (по оси Y+)");
+                //Debug.Log("Свайп вперед (по оси Y+)");
                 MoveObject(Vector3.up);
             }
             else
             {
-                Debug.Log("Свайп назад (по оси Y-)");
+                //Debug.Log("Свайп назад (по оси Y-)");
                 //MoveObject(Vector3.down);
             }
         }

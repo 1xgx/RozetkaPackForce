@@ -8,18 +8,20 @@ public class Box : MonoBehaviour
     private float _offsetX = 0.0f;
     private float _delay = 5.0f;
     [SerializeField] private BoxType _type;
-    [SerializeField] private GameManager _gameManager;
+    public GameManager GameManager;
+    [SerializeField] private int _money = -10;
     public BoxesSpawner Spawner;
     public BoxType Type => _type;
 
     private void Update()
     {
         moveObject();
-        if (Spawner)
+        if (Spawner && GameManager)
         {
         if (transform.position.x <= -5.0f)
         {
             Spawner.Spawn();
+            GameManager.Player.SendAward(_money,0);
             Destroy(gameObject);
         }
 
