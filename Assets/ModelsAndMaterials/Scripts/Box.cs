@@ -8,14 +8,21 @@ public class Box : MonoBehaviour
     private float _offsetX = 0.0f;
     private float _delay = 5.0f;
     [SerializeField] private BoxType _type;
-
+    [SerializeField] private GameManager _gameManager;
+    public BoxesSpawner Spawner;
     public BoxType Type => _type;
+
     private void Update()
     {
         moveObject();
+        if (Spawner)
+        {
         if (transform.position.x <= -5.0f)
         {
+            Spawner.Spawn();
             Destroy(gameObject);
+        }
+
         }
     }
     private void moveObject()
@@ -33,4 +40,5 @@ public class Box : MonoBehaviour
         yield return new WaitForSeconds(_delay);
         Speed = speed;
     }
+
 }

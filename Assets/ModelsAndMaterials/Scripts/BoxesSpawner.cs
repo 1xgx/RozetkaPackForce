@@ -11,11 +11,15 @@ public class BoxesSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnOneBox());
+        //StartCoroutine(SpawnOneBox());
+        //Spawn();
     }
     public void Spawn()
     {
-        StartCoroutine(SpawnOneBox());
+        int Index = Random.Range(0, Boxes.Count);
+        GameObject newObject = Instantiate(Boxes[Index], _offset, Quaternion.identity);
+        newObject.GetComponent<Box>().Spawner = this;
+        newObject.GetComponent<Box>().Speed = _speed;
     }
     private IEnumerator SpawnOneBox()
     {
