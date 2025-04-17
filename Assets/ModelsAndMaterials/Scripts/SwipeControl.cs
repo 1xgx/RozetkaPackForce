@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class SwipeControl : MonoBehaviour
@@ -53,30 +54,34 @@ public class SwipeControl : MonoBehaviour
     }
     private void ProcessSwipe()
     {
+        if (IsPointerOverUI()) return;
         float swipeDistance = endTouchPosition.y - startTouchPosition.y; // Движение по Y
 
         if (Mathf.Abs(swipeDistance) >= swipeThreshold)
         {
             if (swipeDistance < 0)
             {
-                //Debug.Log("Свайп вперед (по оси Y+)");
                 MoveObject(Vector3.up);
-            }
-            else
-            {
-                //Debug.Log("Свайп назад (по оси Y-)");
-                //MoveObject(Vector3.down);
             }
         }
     }
 
     private void MoveObject(Vector3 direction)
     {
-        //transform.position += direction * movementSpeed * Time.deltaTime;
         if (FocusedObject == null) return;
         FocusedObject.position += direction * movementSpeed * Time.deltaTime;
 
 
+    }
+    public static bool IsPointerOverUI()
+    {
+#if UNITY_EDITOR
+        return EventSystem.current.IsPointerOverGameObject();
+#elif UNITY_ANDROID || UNITY_IOS
+    return Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+#else
+    return EventSystem.current.IsPointerOverGameObject();
+#endif
     }
 
 }
