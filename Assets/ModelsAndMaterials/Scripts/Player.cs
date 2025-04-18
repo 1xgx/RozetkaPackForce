@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     }
     public void SendAward(int Money, int Respect, int Hearts)
     {
-        if (Hearts != 0)
+        if (Hearts != 0 && _heartsImage.Count == _hearts-1)
         {
             _heartsImage[_hearts - 1].SetActive(false);
         }
