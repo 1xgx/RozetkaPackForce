@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour
 {
     public void SwipeScene()
     {
+
         SceneManager.LoadScene(1);
     }
 }

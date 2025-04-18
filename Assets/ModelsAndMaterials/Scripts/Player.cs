@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
     }
     private void UpdateText()
     {
-        _moneyText.text = $"Money: {_money}";
-        _RZTKScoreText.text = $"RZTKScore: {_rescpect}";
+        _moneyText.text = $"{_money}";
+        _RZTKScoreText.text = $"{_rescpect}";
     }
 }
 
