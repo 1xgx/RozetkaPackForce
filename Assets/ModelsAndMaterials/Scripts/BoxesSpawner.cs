@@ -19,7 +19,7 @@ public class BoxesSpawner : MonoBehaviour
         GameObject newObject = Instantiate(Boxes[Index], _offset, Quaternion.identity);
         Box newBox = newObject.GetComponent<Box>();
         newBox.Spawner = this;
-        newBox.GameManager = newGameManager;
+        newBox.GameManagerM = newGameManager;
         newBox.Speed = _speed;
         newBox._delay = _waitTime;
     }

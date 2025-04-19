@@ -9,7 +9,7 @@ public class Box : MonoBehaviour
     private float _offsetX = 0.0f;
     public float _delay = 0f;
     [SerializeField] private BoxType _type;
-    public GameManager GameManager;
+    public GameManager GameManagerM;
     [SerializeField] private int _money = -10;
     public BoxesSpawner Spawner;
     [SerializeField] private Slider _slider;
@@ -25,12 +25,13 @@ public class Box : MonoBehaviour
     private void Update()
     {
         moveObject();
-        if (Spawner && GameManager)
+        if(GameManagerM.IsPlaying == false) Destroy(gameObject);
+        if (Spawner && GameManagerM)
         {
-        if (transform.position.x <= -5.0f)
+        if (transform.position.x <= -5.0f )
         {
             Spawner.Spawn();
-            GameManager.Player.SendAward(_money,0,1);
+            GameManagerM.Player.SendAward(_money,0,1);
             Destroy(gameObject);
         }
 

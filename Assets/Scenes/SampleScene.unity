@@ -2877,6 +2877,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3b6ea49b05504154c9137c02a84d112e, type: 3}
   _StartAudio: {fileID: 8300000, guid: 32465f40ce999004f9c8b32b83eb7a64, type: 3}
   _audioSource: {fileID: 1274277566}
+  IsPlaying: 1
 --- !u!4 &1274277565
 Transform:
   m_ObjectHideFlags: 0
@@ -4175,6 +4176,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1796049027435775131, guid: 14e51c33f21251544885abff047e307c, type: 3}
+      propertyPath: GameManagerM
+      value: 
+      objectReference: {fileID: 1274277564}
     - target: {fileID: 2581426588689310223, guid: 14e51c33f21251544885abff047e307c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4292,6 +4297,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5420004641712109663, guid: c620eb0c61979874c9ea935028ad823e, type: 3}
+      propertyPath: GameManagerM
+      value: 
+      objectReference: {fileID: 1274277564}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4349,6 +4358,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 481642661694277827, guid: 7350e7494963e7544b90c7a85ce8eba1, type: 3}
+      propertyPath: GameManagerM
+      value: 
+      objectReference: {fileID: 1274277564}
     - target: {fileID: 6161142665677714948, guid: 7350e7494963e7544b90c7a85ce8eba1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

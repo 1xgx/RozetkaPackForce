@@ -27,14 +27,15 @@ public class Player : MonoBehaviour
     }
     public void SendAward(int Money, int Respect, int Hearts)
     {
-        if (Hearts != 0 && _heartsImage.Count == _hearts-1)
-        {
-            _heartsImage[_hearts - 1].SetActive(false);
-        }
+        
         _money += Money;
         _rescpect += Respect;
         _hearts -= Hearts;
-        
+        if (Hearts != 0)
+        {
+            _heartsImage[_hearts].SetActive(false);
+            _heartsImage.RemoveAt(_hearts);
+        }
         if (_money == 0 || _hearts == 0)
         {
             _gameManager.GameOver();

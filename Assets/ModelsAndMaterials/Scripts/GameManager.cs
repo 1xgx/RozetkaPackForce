@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<AudioClip> _clipsOnSwipeTypeOfBoxes;
     [SerializeField] private AudioClip _StartAudio;
     [SerializeField] private AudioSource _audioSource;
+    public bool IsPlaying = true;
     private void Awake()
     {
         _zoneAccept.CheckType(_boxType);
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        IsPlaying = false;
         _gameOverHUD.SetActive(true);
         _spawner.StopAllCoroutines();
         _spawner.enabled = false;
