@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,6 +71,8 @@ public class SwipeControl : MonoBehaviour
     {
         if (FocusedObject == null) return;
         FocusedObject.position += direction * movementSpeed * Time.deltaTime;
+        FocusedObject.DORewind();
+        FocusedObject.DOShakeScale(.5f, .5f, 3, 20, true);
 
 
     }
