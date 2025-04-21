@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int _money = 15;
     [SerializeField] private int _hearts = 3;
     [SerializeField] private int _rescpect = 15;
+    [SerializeField] private int _rescpectToHearts = 0;
     [SerializeField] private TextMeshProUGUI _moneyText;
     [SerializeField] private TextMeshProUGUI _RZTKScoreText;
     [SerializeField] private GameManager _gameManager;
@@ -27,14 +28,24 @@ public class Player : MonoBehaviour
     }
     public void SendAward(int Money, int Respect, int Hearts)
     {
-        
+
         _money += Money;
         _rescpect += Respect;
         _hearts -= Hearts;
+        _rescpectToHearts += Respect;
+        if (_rescpectToHearts == 30)
+        {
+            _rescpectToHearts = 0;
+            if(_hearts < 3)
+            {
+                _hearts++;
+                _heartsImage[_hearts-1].SetActive(true);
+            }
+        }
         if (Hearts != 0)
         {
             _heartsImage[_hearts].SetActive(false);
-            _heartsImage.RemoveAt(_hearts);
+            //_heartsImage.RemoveAt(_hearts);
         }
         if (_money == 0 || _hearts == 0)
         {
